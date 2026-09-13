@@ -4,6 +4,10 @@ local lanes = require("lanes").configure({
 
 local function trabalhador(numero, tempo_trabalho)
     print("Trabalhador " .. numero .. " começou")
+
+    local lanes_thread = require("lanes")
+    lanes_thread.sleep(tempo_trabalho)
+
     print("Trabalhador " .. numero .. " terminou (levou " .. tempo_trabalho .. "s)")
 end
 
@@ -21,5 +25,7 @@ end
 for _, thread in ipairs(threads) do
     thread:join()
 end
+
+print("\nTodos os trabalhadores terminaram!")
 
 print("\nTodos os trabalhadores terminaram!")
